@@ -2,9 +2,12 @@ public class TodoList {
     public static  String[] models = new String[10];
 
     public static void main(String[] args) {
-        testAddTodoList();
+        testRemoveTodoList();
     }
 
+    /*
+    * Show Todo List
+    * */
     public static void showTodoList() {
         for(var i = 0; i <models.length; i++) {
             var todo = models[i];
@@ -23,6 +26,9 @@ public class TodoList {
         showTodoList();
     }
 
+    /*
+    * Add Todo List
+    * */
     public static void addTodoList(String todo) {
         var isFull = true;
 
@@ -58,8 +64,43 @@ public class TodoList {
         showTodoList();
     }
 
-    public static void removeTodoList() {
+    /*
+    * Remove Todo List
+    * */
+    public static boolean removeTodoList(Integer number) {
+        if(number > models.length) {
+            return false;
+        }else if(models[number - 1] == null) {
+            return false;
+        } else {
+            for(int i = (number - 1); i < models.length; i++) {
+                if(i == (models.length - 1)) {
+                    models[i] = null;
+                } else {
+                    models[i] = models[i + 1];
+                }
+            }
+            return true;
+        }
+    }
 
+    public static void testRemoveTodoList() {
+        addTodoList("Todo 1");
+        addTodoList("Todo 2");
+        addTodoList("Todo 3");
+        addTodoList("Todo 4");
+        addTodoList("Todo 5");
+
+        var result = removeTodoList(20);
+        System.out.println(result);
+
+        result = removeTodoList(7);
+        System.out.println(result);
+
+        result = removeTodoList(2);
+        System.out.println(result);
+
+        showTodoList();
     }
 
     public  static  void viewShowTodoList() {
