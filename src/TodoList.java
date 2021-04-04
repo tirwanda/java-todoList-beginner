@@ -1,8 +1,9 @@
 public class TodoList {
     public static  String[] models = new String[10];
+    public static java.util.Scanner  scanner = new java.util.Scanner(System.in);
 
     public static void main(String[] args) {
-        testRemoveTodoList();
+        testInput();
     }
 
     /*
@@ -101,6 +102,20 @@ public class TodoList {
         System.out.println(result);
 
         showTodoList();
+    }
+
+    /*
+    * Input Todo List
+    * */
+    public static String input(String todo) {
+        System.out.print(todo + " : ");
+        String data = scanner.nextLine();
+        return data;
+    }
+
+    public static void testInput() {
+        var data = input("Nama");
+        System.out.println("Hi, " + data);
     }
 
     public  static  void viewShowTodoList() {
